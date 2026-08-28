@@ -59,14 +59,10 @@
             inputs.nixos-hardware.nixosModules.common-cpu-amd
             inputs.nixos-hardware.nixosModules.common-pc-laptop
           ];
-          tags = [ "desktop" "laptop" ];
-        };
-        lestrade = {
-          hardware = [
-            inputs.nixos-hardware.nixosModules.common-cpu-intel
-            inputs.nixos-hardware.nixosModules.common-pc-laptop
+          tags = [
+            "desktop"
+            "laptop"
           ];
-          tags = [ "desktop" "laptop" ];
         };
         hudson = {
           hardware = [
@@ -81,28 +77,36 @@
         claude = { };
       };
 
-      baseModules = hostName: host: [
-        ./hosts/${hostName}
-        ./modules
-        inputs.impermanence.nixosModules.impermanence
-        inputs.disko.nixosModules.disko
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useUserPackages = true;
-            useGlobalPkgs = true;
-            backupFileExtension = "backup";
-            extraSpecialArgs = { inherit inputs hostName; } // myLib;
-          };
-        }
-      ]
-      ++ host.hardware;
+      baseModules =
+        hostName: host:
+        [
+          ./hosts/${hostName}
+          ./modules
+          inputs.impermanence.nixosModules.impermanence
+          inputs.disko.nixosModules.disko
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useUserPackages = true;
+              useGlobalPkgs = true;
+              backupFileExtension = "backup";
+              extraSpecialArgs = {
+                inherit inputs hostName;
+              }
+              // myLib;
+            };
+          }
+        ]
+        ++ host.hardware;
 
       mkHost =
         hostName: host:
         lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs hostName; } // myLib;
+          specialArgs = {
+            inherit inputs hostName;
+          }
+          // myLib;
           modules = baseModules hostName host;
         };
 
@@ -127,7 +131,10 @@
         {
           meta = {
             nixpkgs = import nixpkgs { inherit system; };
-            specialArgs = { inherit inputs; } // myLib;
+            specialArgs = {
+              inherit inputs;
+            }
+            // myLib;
             nodeSpecialArgs = lib.mapAttrs (hostName: _: { inherit hostName; }) hosts;
           };
         }
