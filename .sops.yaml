@@ -1,0 +1,10 @@
+keys:
+  - &admin age1x2fvs92qtm7lw53kncs68n562cjak65z4hv23wjkrenprh6g5v4qgjdwz3
+  - &gregson age157sfz3j6nn7me33rvk8l59tefyjd2u7jyqhzjnwcj52emd7rnc0qs2s0d3
+
+creation_rules:
+  - path_regex: ^secrets\.yaml$
+    key_groups:
+      - age:
+          - *admin
+          - *gregson
