@@ -5,7 +5,7 @@
   sops = {
     defaultSopsFile = ../secrets.yaml;
     age = {
-      keyFile = "/persist/sops/${hostName}-age.key";
+      keyFile = "/persist/sops/${hostName}.key";
       sshKeyPaths = [ ];
       generateKey = false;
     };
