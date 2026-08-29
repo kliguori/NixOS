@@ -1,6 +1,21 @@
 { pkgs, ... }:
+let
+  pythonEnv = pkgs.python312.withPackages (
+    ps: with ps; [
+      sympy
+      numpy
+      scipy
+      matplotlib
+      ipython
+      black
+      flake8
+    ]
+  );
+in
 {
   system.stateVersion = "26.05";
+
+  nixpkgs.config.allowUnfree = true;
 
   microvm = {
     hypervisor = "qemu";
@@ -60,12 +75,12 @@
 
   environment.systemPackages = with pkgs; [
     claude-code
+    texliveFull
+    pythonEnv
     git
+    neovim
     ripgrep
     fd
-    neovim
-    nodejs
-    python3
   ];
 
   environment.sessionVariables.WORKSPACE = "/workspace";
