@@ -28,8 +28,7 @@
         hashedPasswordFile = config.sops.secrets."users/kevin/password".path;
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKjOZvkhZPv1wkLTfC+3A1PqVcAEa6svStem0QCT7PoQ kevin@sherlock"
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICWTkqAIUlV0Lap37yUCrWej+XzhzkxYNgff1bwlxszv kevin@watson"
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHnHto0uafEodToMmanowEudOxEqGiTqKcJnGXL9g+xy kevin@gregson"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEMScW1nyuyek2PI7Jyaa6Ec5jfMafsR+RpuYuR3rVlV kevin@gregson"
         ];
       };
     };

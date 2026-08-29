@@ -59,7 +59,7 @@ in
       }
 
       binds {
-        Mod+Return { spawn "kitty"; }
+        Mod+Return { spawn "alacritty"; }
         Mod+Space { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
         Mod+Shift+L { spawn "dms" "ipc" "call" "lock" "lock"; }
 
