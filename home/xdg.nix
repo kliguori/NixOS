@@ -9,6 +9,7 @@
 
       documents = "${osConfig.users.users.kevin.home}/tank/documents";
       pictures = "${osConfig.users.users.kevin.home}/tank/pictures";
+      projects = "${osConfig.users.users.kevin.home}/tank/projects";
       videos = "${osConfig.users.users.kevin.home}/tank/videos";
       music = "${osConfig.users.users.kevin.home}/tank/music";
 
