@@ -36,6 +36,6 @@ Hudson is a home server.
 Mycroft is a remote backup target.
 
 ## To do:
-- [ ] Stuff
+- [ ] Fix claude vm
 
 ## About installing and managing
