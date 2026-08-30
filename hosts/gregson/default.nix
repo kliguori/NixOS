@@ -4,7 +4,10 @@
 
   system.stateVersion = "26.05";
 
-  systemOptions.desktop.enable = true;
+  systemOptions = {
+    desktop.enable = true;
+    claude-vm.enable = true;
+  };
 
   services.btrfs.autoScrub = {
     enable = true;

@@ -86,10 +86,6 @@
         };
       };
 
-      vms = {
-        claude = { };
-      };
-
       baseModules =
         hostName: host:
         [
@@ -122,18 +118,6 @@
           // myLib;
           modules = baseModules hostName host;
         };
-
-      mkVm =
-        name: _:
-        lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            inputs.microvm.nixosModules.microvm
-            ./vms/${name}.nix
-          ];
-        };
-
     in
     {
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
@@ -177,7 +161,7 @@
         };
       };
 
-      nixosConfigurations = lib.mapAttrs mkHost hosts // lib.mapAttrs mkVm vms;
+      nixosConfigurations = lib.mapAttrs mkHost hosts;
 
       colmenaHive = inputs.colmena.lib.makeHive (
         {

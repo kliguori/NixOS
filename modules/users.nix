@@ -18,6 +18,7 @@
       kevin = {
         isNormalUser = true;
         home = "/home/kevin";
+        uid = 1000;
         createHome = true;
         shell = pkgs.zsh;
         description = "Kevin Liguori";
