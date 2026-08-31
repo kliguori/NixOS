@@ -19,9 +19,6 @@
         signal-desktop
         anki
         zoom-us
-        slack
-        google-chrome
-        openai-whisper
         yt-dlp
         mpv
         lua-language-server
@@ -41,6 +38,7 @@
         texlab
         ormolu
         ocamlformat
+        texliveFull
       ]
       ++ [ inputs.hibi.packages.${pkgs.stdenv.hostPlatform.system}.default ];
   };
