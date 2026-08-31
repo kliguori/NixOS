@@ -17,7 +17,7 @@ in
           normal.family = f.mono;
           size = f.size;
         };
-        window.opacity = 0.95;
+        window.opacity = 0.75;
         colors = {
           primary = {
             foreground = c.foreground;

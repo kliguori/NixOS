@@ -18,8 +18,8 @@
       cl = "clear";
       ".." = "cd ..";
       gs = "git status";
-      ga = "git add .";
-      gc = "git commit -m";
+      ga = "git add";
+      gc = "git commit";
       gp = "git push";
       gf = "git fetch";
       gl = "git pull";
