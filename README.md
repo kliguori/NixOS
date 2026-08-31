@@ -12,10 +12,10 @@ Sherlock is my desktop and main system.
 - 1 TB HDD
 
 ## Watson
-Watson is my primary laptop.
+Watson will be my primary laptop.
 
 ## Lestrade
-Lestrade is my home server.
+Lestrade is backup laptop.
 - Dell XPS15 9500 
 - i7 10750H (6 core)
 - GTX 1650Ti
@@ -25,7 +25,7 @@ Lestrade is my home server.
 ## Gregson
 Gregson is a (somewhat) usefull testbed for watson/lestrade.
 - Lenovo ThinkPad T14 Gen 1 
-- Ryzen 7
+- Ryzen 7 Pro 4750U (8 core)
 - 16 GB (soldered) DDR4
 - 8 GB SoDimm DDR4
 
@@ -35,7 +35,10 @@ Hudson is a home server.
 ## Mycroft
 Mycroft is a remote backup target.
 
+## Wiggins
+Wiggins will be a vps for running headscale.
+
 ## To do:
-- [ ] Fix claude vm
+- [x] Fix claude vm
 
 ## About installing and managing
