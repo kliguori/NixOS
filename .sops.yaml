@@ -1,5 +1,7 @@
 keys:
   - &admin age1x2fvs92qtm7lw53kncs68n562cjak65z4hv23wjkrenprh6g5v4qgjdwz3
+  - &watson age18yg47wkfu6dq27jrxajrazf8agvd93m0hfjlns9xac9422u4lduskyzhe5
+  - &lestrade age1d332dljl362fxr4pjd2df0kx27a92j68qs2p3jjl44c9djtnef6s82trgv
   - &gregson age157sfz3j6nn7me33rvk8l59tefyjd2u7jyqhzjnwcj52emd7rnc0qs2s0d3
 
 creation_rules:
@@ -7,4 +9,6 @@ creation_rules:
     key_groups:
       - age:
           - *admin
+          - *watson
+          - *lestrade
           - *gregson
