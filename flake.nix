@@ -57,7 +57,17 @@
           ];
           tags = [ "desktop" ];
         };
-        gregson = {
+        watson = {
+          hardware = [
+            inputs.nixos-hardware.nixosModules.common-cpu-intel
+            inputs.nixos-hardware.nixosModules.common-pc-laptop
+          ];
+          tags = [
+            "desktop"
+            "laptop"
+          ];
+        };
+        lestrade = {
           hardware = [
             inputs.nixos-hardware.nixosModules.common-cpu-amd
             inputs.nixos-hardware.nixosModules.common-pc-laptop
@@ -73,16 +83,6 @@
             inputs.nixos-hardware.nixosModules.common-pc
           ];
           tags = [ "server" ];
-        };
-        jones = {
-          hardware = [
-            inputs.nixos-hardware.nixosModules.common-cpu-intel
-            inputs.nixos-hardware.nixosModules.common-pc-laptop
-          ];
-          tags = [
-            "desktop"
-            "laptop"
-          ];
         };
       };
 
