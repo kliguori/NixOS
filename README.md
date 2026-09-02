@@ -42,3 +42,8 @@ Wiggins will be a vps for running headscale.
 - [x] Fix claude vm
 
 ## About installing and managing
+nix run github:nix-community/nixos-anywhere/<tag> -- \                                            17:58:48
+--flake .#<host> \
+--disk-encryption-keys /tmp/luks.key <path-to-luks-key> \
+--extra-files <path-to-extra-folder> \
+--target-host root@<ip-of-target>
