@@ -1,5 +1,5 @@
 {
-  description = "One config to rule them all";
+  description = "One flake to rule them all, one flake to define them, one flake to lock them all, and with one command apply them";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
