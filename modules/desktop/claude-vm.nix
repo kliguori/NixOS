@@ -130,9 +130,9 @@ in
 
           users = {
             mutableUsers = false;
+            allowNoPasswordLogin = true;
             users.kevin = {
               isNormalUser = true;
-              allowNoPasswordLogin = true;
               uid = 1000;
               home = "/home/kevin";
               extraGroups = [ ];
