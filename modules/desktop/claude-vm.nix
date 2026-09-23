@@ -132,6 +132,7 @@ in
             mutableUsers = false;
             users.kevin = {
               isNormalUser = true;
+              allowNoPasswordLogin = true;
               uid = 1000;
               home = "/home/kevin";
               extraGroups = [ ];
