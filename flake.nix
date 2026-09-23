@@ -47,7 +47,6 @@
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
-      pkgs = nixpkgs.legacyPackages.${system};
       myLib = import ./lib { inherit lib; };
       hosts = {
         sherlock = {
@@ -121,46 +120,6 @@
     in
     {
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
-
-      packages.${system} = {
-        install-host = pkgs.writeShellApplication {
-          name = "install-host";
-          runtimeInputs = [
-            inputs.nixos-anywhere.packages.${system}.default
-            pkgs.openssh
-            pkgs.coreutils
-          ];
-          text = ''
-            FLAKE="''${1:?usage: install-host <flake#host> <ip> <age-key-file>}"
-            IP="''${2:?usage: install-host <flake#host> <ip> <age-key-file>}"
-            KEY="''${3:?usage: install-host <flake#host> <ip> <age-key-file>}"
-
-            HOST="''${FLAKE##*#}"
-            if [ "$HOST" = "$FLAKE" ]; then
-              echo "flake must include #<host>, e.g. .#jones" >&2
-              exit 1
-            fi
-
-            TMP=$(mktemp -d)
-            trap 'rm -rf "$TMP"' EXIT
-
-            read -rs -p "LUKS passphrase for $HOST: " LUKS
-            echo
-            printf '%s' "$LUKS" > "$TMP/luks.key"
-
-            install -Dm600 "$KEY" "$TMP/extra/persist/sops/$HOST.key"
-
-            echo "installing $HOST from $FLAKE"
-
-            nixos-anywhere \
-              --flake "$FLAKE" \
-              --disk-encryption-keys /tmp/luks.key "$TMP/luks.key" \
-              --extra-files "$TMP/extra" \
-              "root@$IP"
-          '';
-        };
-      };
-
       nixosConfigurations = lib.mapAttrs mkHost hosts;
 
       colmenaHive = inputs.colmena.lib.makeHive (

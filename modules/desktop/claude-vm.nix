@@ -48,6 +48,18 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    environment.shellAliases.claude = ''
+      ssh -t -p 2222 kevin@localhost "cd /workspace && exec claude"
+    '';
+
+    systemd.tmpfiles.rules = [
+      "d /var/lib/microvms/claude 0755 microvm kvm -"
+      "d ${stateDir} 0700 kevin users -"
+      "d ${stateDir}/home 0700 kevin users -"
+    ];
+
+    systemOptions.impermanence.persistDirs = [ "/var/lib/microvms/claude" ];
+
     microvm = {
       host.enable = true;
       autostart = [ ];
@@ -122,14 +134,14 @@ in
               isNormalUser = true;
               uid = 1000;
               home = "/home/kevin";
-              extraGroups = [ "wheel" ];
+              extraGroups = [ ];
               hashedPassword = "";
               openssh.authorizedKeys.keys = config.users.users.kevin.openssh.authorizedKeys.keys;
               shell = pkgs.zsh;
             };
           };
 
-          security.sudo.wheelNeedsPassword = false;
+          nix.enable = false;
           programs.zsh.enable = true;
           services = {
             getty.autologinUser = "kevin";
@@ -158,13 +170,5 @@ in
       };
     };
 
-    systemd.tmpfiles.rules = [
-      "d ${stateDir} 0700 kevin users -"
-      "d ${stateDir}/home 0700 kevin users -"
-    ];
-
-    environment.shellAliases.claude = ''
-      ssh -t -p 2222 kevin@localhost "cd /workspace && exec claude"
-    '';
   };
 }
