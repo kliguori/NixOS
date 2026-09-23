@@ -28,7 +28,6 @@
       vi = "nvim";
       nrs = "sudo nixos-rebuild switch --flake ~/tank/nixos#${hostName}";
       nd = "nix develop --profile .gcroot";
-      cvm = "ssh -p 2222 kevin@localhost";
     };
   };
 }

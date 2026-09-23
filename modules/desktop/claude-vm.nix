@@ -48,8 +48,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.shellAliases.claude = ''
-      ssh -t -p 2222 kevin@localhost "cd /workspace && exec claude"
+    environment.shellAliases.cvm = ''
+      ssh -t -p 2222 kevin@localhost "cd /workspace && exec zsh"
     '';
 
     systemd.tmpfiles.rules = [
