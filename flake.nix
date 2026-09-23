@@ -90,7 +90,6 @@
         hostName: host:
         [
           ./hosts/${hostName}
-          ./modules
           inputs.impermanence.nixosModules.impermanence
           inputs.disko.nixosModules.disko
           inputs.home-manager.nixosModules.home-manager
@@ -106,6 +105,7 @@
             };
           }
         ]
+        ++ myLib.autoImport ./modules
         ++ host.hardware;
 
       mkHost =

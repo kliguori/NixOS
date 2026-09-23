@@ -1,4 +1,0 @@
-{ autoImport, ... }:
-{
-  imports = autoImport ./.;
-}

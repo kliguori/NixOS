@@ -3,6 +3,7 @@
   config,
   inputs,
   pkgs,
+  autoImport,
   ...
 }:
 {
@@ -40,8 +41,5 @@
     files = config.systemOptions.impermanence.persistUserFiles;
   };
 
-  home-manager.users.kevin.imports = [
-    inputs.nixvim.homeModules.nixvim
-    ../home
-  ];
+  home-manager.users.kevin.imports = [ inputs.nixvim.homeModules.nixvim ] ++ autoImport ../../home;
 }

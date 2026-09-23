@@ -1,12 +1,9 @@
 {
   pkgs,
   inputs,
-  autoImport,
   ...
 }:
 {
-  imports = autoImport ./.;
-
   programs.home-manager.enable = true;
 
   home = {
