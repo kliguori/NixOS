@@ -49,7 +49,7 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.shellAliases.cvm = ''
-      ssh -t -p 2222 kevin@localhost "cd /workspace && exec zsh"
+      ssh -p 2222 kevin@localhost
     '';
 
     systemd.tmpfiles.rules = [
@@ -143,7 +143,10 @@ in
           };
 
           nix.enable = false;
-          programs.zsh.enable = true;
+          programs.zsh = {
+            enable = true;
+            loginShellInit = "cd /workspace";
+          };
           services = {
             getty.autologinUser = "kevin";
             openssh = {
@@ -154,8 +157,8 @@ in
               };
             };
           };
-
           environment = {
+            shellAliases.claude = "claude --dangerously-skip-permissions";
             sessionVariables.WORKSPACE = "/workspace";
             systemPackages = with pkgs; [
               claude-code
